@@ -39,19 +39,15 @@ public class SocketService implements Closeable {
         }
     }
 
-    public void writeResponse(String headers, Reader reader) {
+    public void writeResponse(String response) {
         try {
             PrintWriter output = new PrintWriter(socket.getOutputStream());
-            output.print(headers);
-            if ( reader != null) {
-                reader.transferTo(output);
-            }
+            output.print(response);
             output.flush();
         } catch (IOException ex) {
             throw new IllegalStateException(ex);
         }
     }
-
 
     @Override
     public void close() throws IOException {
