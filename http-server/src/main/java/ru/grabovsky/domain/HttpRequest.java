@@ -12,21 +12,6 @@ public class HttpRequest {
 
     private String body;
 
-    public HttpRequest() {
-    }
-
-    public HttpRequest(String method, String path) {
-        this.method = method;
-        this.path = path;
-    }
-
-    public HttpRequest(String method, String path, Map<String, String> headers, String body) {
-        this.method = method;
-        this.path = path;
-        this.headers = headers;
-        this.body = body;
-    }
-
     public String getMethod() {
         return method;
     }
@@ -57,5 +42,40 @@ public class HttpRequest {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public static Builder builder(){
+        return new Builder();
+    }
+
+
+    public static class Builder{
+        private final HttpRequest request;
+        private Builder(){
+            this.request = new HttpRequest();
+        }
+        public Builder withMethod(String method) {
+            request.method = method;
+            return this;
+        }
+
+        public Builder withPath(String path) {
+            request.path = path;
+            return this;
+        }
+
+        public Builder withHeaders(Map<String, String> headers) {
+            request.headers = headers;
+            return this;
+        }
+
+        public Builder withBody(String body) {
+            request.body = body;
+            return this;
+        }
+
+        public HttpRequest build(){
+            return request;
+        }
     }
 }

@@ -16,7 +16,6 @@ public class RequestParserImpl implements RequestParser {
     @Override
     public HttpRequest parse(List<String> rawRequest) {
         String[] first = rawRequest.get(0).split(" ");
-        HttpRequest request = new HttpRequest(first[0], first[1]);
         Map<String, String> headers = new HashMap<>();
         boolean content = false;
         StringBuilder sb = new StringBuilder();
@@ -33,7 +32,11 @@ public class RequestParserImpl implements RequestParser {
                 sb.append(item);
             }
         }
-        request.setBody(sb.toString());
-        return request;
+        return HttpRequest.builder()
+                .withMethod(first[0])
+                .withPath(first[1])
+                .withHeaders(headers)
+                .withBody(sb.toString())
+                .build();
     }
 }

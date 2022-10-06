@@ -53,4 +53,35 @@ public class HttpResponse {
     public void setBody(List<String> body) {
         this.body = body;
     }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private final HttpResponse response;
+
+        private Builder() {
+            this.response = new HttpResponse();
+        }
+
+        public Builder withStatusCode(int statusCode) {
+            response.statusCode = statusCode;
+            return this;
+        }
+
+        public Builder withHeaders(Map<String, String> headers) {
+            response.headers = headers;
+            return this;
+        }
+
+        public Builder withBody(List<String> body) {
+            response.body = body;
+            return this;
+        }
+
+        public HttpResponse build(){
+            return response;
+        }
+    }
 }
