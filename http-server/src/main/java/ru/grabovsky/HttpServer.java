@@ -2,6 +2,7 @@ package ru.grabovsky;
 
 import ru.grabovsky.config.Config;
 import ru.grabovsky.config.ConfigFactory;
+import ru.grabovsky.handler.RequestHandler;
 import ru.grabovsky.logger.ConsoleLogger;
 import ru.grabovsky.logger.Logger;
 

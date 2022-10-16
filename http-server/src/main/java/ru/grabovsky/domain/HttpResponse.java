@@ -1,12 +1,14 @@
 package ru.grabovsky.domain;
 
+import ru.grabovsky.HttpStatus;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class HttpResponse {
 
-    private int statusCode;
+    private HttpStatus statusCode;
 
     private Map<String, String> headers;
 
@@ -15,26 +17,12 @@ public class HttpResponse {
     public HttpResponse() {
     }
 
-    public HttpResponse(int statusCode) {
-        this.statusCode = statusCode;
-    }
 
-    public HttpResponse(int statusCode, Map<String, String> headers) {
-        this.statusCode = statusCode;
-        this.headers = headers;
-    }
-
-    public HttpResponse(int statusCode, Map<String, String> headers, List<String> body) {
-        this.statusCode = statusCode;
-        this.headers = headers;
-        this.body = body;
-    }
-
-    public int getStatusCode() {
+    public HttpStatus getStatusCode() {
         return statusCode;
     }
 
-    public void setStatusCode(int statusCode) {
+    public void setStatusCode(HttpStatus statusCode) {
         this.statusCode = statusCode;
     }
 
@@ -65,7 +53,7 @@ public class HttpResponse {
             this.response = new HttpResponse();
         }
 
-        public Builder withStatusCode(int statusCode) {
+        public Builder withStatusCode(HttpStatus statusCode) {
             response.statusCode = statusCode;
             return this;
         }
