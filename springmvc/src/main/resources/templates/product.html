@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products list</title>
+</head>
+<body>
+<h1>Products</h1>
+        <p><b>ID: </b><span th:text="${product.id}"></span></p>
+        <p><b>Name: </b><span th:text="${product.title}"></span></p>
+        <p><b>Price: </b><span th:text="${product.price}"></span></p>
+        <p><a th:href="@{'/' + ${product.id} + '/edit'}">Изменить</a> <a th:href="@{'/' + ${product.id} + '/delete'}">Удалить</a> </p>
+</body>
+</html>

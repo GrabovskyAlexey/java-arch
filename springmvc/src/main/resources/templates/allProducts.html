@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products list</title>
+</head>
+<body>
+<h1>Products list</h1>
+<p><a th:href="@{'/add'}">Добавить продукт</a></p>
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="prod : ${products}">
+        <td th:text="${prod.id}">Onions</td>
+        <td th:text="${prod.title}">2.41</td>
+        <td th:text="${prod.price}">yes</td>
+        <td><a th:href="@{'/' + ${prod.id}}">Подробнее</a> <a th:href="@{'/' + ${prod.id} + '/edit'}">Изменить</a> <a th:href="@{'/' + ${prod.id} + '/delete'}">Удалить</a> </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
