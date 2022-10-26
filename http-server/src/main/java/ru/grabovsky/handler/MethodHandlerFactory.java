@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 
 public class MethodHandlerFactory {
     public static MethodHandler create(final SocketService socketService, final ResponseSerializer responseSerializer, final Config config) {
+        // Хардкод классов с хендлерами
         String[] classNames = new String[]{
                 "ru.grabovsky.handler.GetMethodHandler",
                 "ru.grabovsky.handler.PutMethodHandler",
