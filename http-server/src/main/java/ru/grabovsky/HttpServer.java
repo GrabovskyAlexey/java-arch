@@ -1,5 +1,7 @@
 package ru.grabovsky;
 
+import ru.grabovsky.config.Config;
+import ru.grabovsky.config.ConfigFactory;
 import ru.grabovsky.logger.ConsoleLogger;
 import ru.grabovsky.logger.Logger;
 
@@ -11,14 +13,15 @@ public class HttpServer {
     private static final Logger logger = new ConsoleLogger();
 
     public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(8088)) {
+        Config config = ConfigFactory.getConfig(args);
+        try (ServerSocket serverSocket = new ServerSocket(config.getPort())) {
             logger.info("Server started!");
 
             while (true) {
                 Socket socket = serverSocket.accept();
                 logger.info("New client connected!");
 
-                new Thread(new RequestHandler(new SocketService(socket))).start();
+                new Thread(new RequestHandler(new SocketService(socket), config)).start();
             }
         } catch (IOException e) {
             e.printStackTrace();
